@@ -2,7 +2,7 @@
   "name": "org.pcsoft.unity.prefs-ex",
   "version": "1.0.0",
   "displayName": "Player Preferences Extension",
-  "description": "Extension for Unity player preferences system.",
+  "description": "Extension for Unity player preferences system. **Bold**",
   "unity": "2021.1",
   "keywords": [
     "player",

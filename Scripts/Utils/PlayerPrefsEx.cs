@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using UnityEngine;
@@ -64,6 +65,19 @@ namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Utils
             RaiseChange(PlayerPrefsChangeType.AddOrUpdate, PlayerPrefsDataType.Float, key);
         }
         
+        public static double GetDouble(string key, double def, params string[] oldKeys) =>
+            GetValue(key, def, oldKeys, (s, d) => PlayerPrefs.HasKey(s) ? double.Parse(PlayerPrefs.GetString(s), CultureInfo.InvariantCulture) : d);
+
+        public static void SetDouble(string key, double val, bool autoSave = false)
+        {
+            PlayerPrefs.SetString(key, val.ToString(CultureInfo.InvariantCulture));
+            if (autoSave)
+            {
+                PlayerPrefs.Save();
+            }
+            RaiseChange(PlayerPrefsChangeType.AddOrUpdate, PlayerPrefsDataType.Double, key);
+        }
+        
         public static string GetString(string key, string def, params string[] oldKeys) => GetValue(key, def, oldKeys, PlayerPrefs.GetString);
 
         public static void SetString(string key, string val, bool autoSave = false)
@@ -74,6 +88,19 @@ namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Utils
                 PlayerPrefs.Save();
             }
             RaiseChange(PlayerPrefsChangeType.AddOrUpdate, PlayerPrefsDataType.String, key);
+        }
+        
+        public static char GetCharacter(string key, char def, params string[] oldKeys) => 
+            GetValue(key, def, oldKeys, (s, c) => PlayerPrefs.HasKey(s) ? PlayerPrefs.GetString(s)[0] : c);
+
+        public static void SetCharacter(string key, char val, bool autoSave = false)
+        {
+            PlayerPrefs.SetString(key, val.ToString());
+            if (autoSave)
+            {
+                PlayerPrefs.Save();
+            }
+            RaiseChange(PlayerPrefsChangeType.AddOrUpdate, PlayerPrefsDataType.Character, key);
         }
         
         public static byte[] GetBytes(string key, byte[] def, params string[] oldKeys) => 
@@ -247,9 +274,11 @@ namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Utils
     {
         Unspecific,
         String,
+        Character,
         Int,
         Long,
         Float,
+        Double,
         Boolean,
         Binary,
         DateTime,
