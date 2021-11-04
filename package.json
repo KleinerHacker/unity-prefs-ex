@@ -1,0 +1,20 @@
+{
+  "name": "org.pcsoft.unity.prefs-ex",
+  "version": "1.0.0",
+  "displayName": "Player Preferences Extension",
+  "description": "Extension for Unity player preferences system.",
+  "unity": "2021.1",
+  "keywords": [
+    "player",
+    "extension",
+    "tooling",
+    "preferences",
+    "settigs",
+    "options"
+  ],
+  "author": {
+    "name": "Pfeiffer C Soft",
+    "email": "kl3in3rhack3r@gmail.com",
+    "url": "https://github.com/KleinerHacker/unity-prefs-ex"
+  }
+}
