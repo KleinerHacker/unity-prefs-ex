@@ -1,5 +1,5 @@
 {
-  "name": "org.pcsoft.unity.prefs-ex",
+  "name": "org.pcsoft.prefs-ex",
   "version": "1.0.0",
   "displayName": "Player Preferences Extension",
   "description": "Extension for Unity player preferences system.",
