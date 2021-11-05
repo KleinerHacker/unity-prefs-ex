@@ -4,6 +4,11 @@ Extension for player preferences based on Unity player preferences.
 # install
 Use this repo and import it directly in Unity.
 
+### Open UPM
+URL: https://package.openupm.com
+
+Scope: org.pcsoft
+
 # usage
 Instead to use `PlayerPrefs` use class `PlayerPrefsEx` that supports additional types and functionality.
 
