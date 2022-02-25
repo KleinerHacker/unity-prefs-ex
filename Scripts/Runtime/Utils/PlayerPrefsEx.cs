@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -16,8 +15,6 @@ namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Runtime.Utils
         public static event EventHandler<PlayerPrefsChangeEventArgs> OnChanged;
 
         #endregion
-
-        private static readonly IDictionary<string, DynamicCache> _dynamicCache = new Dictionary<string, DynamicCache>();
 
         public static bool GetBool(string key, bool def, params string[] oldKeys) =>
             GetValue(key, def, oldKeys, (k, d) => PlayerPrefs.GetInt(k, d ? 1 : 0) != 0);
@@ -177,22 +174,6 @@ namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Runtime.Utils
             return getter(key, currentDefault);
         }
 
-        private static T GetValueCached<T>(string key, T def, bool refresh, string[] oldKeys, Func<string, T, T> getter)
-        {
-            if (!_dynamicCache.ContainsKey(key))
-            {
-                _dynamicCache.Add(key, new DynamicCache<T>(key, GetValue(key, def, oldKeys, getter)));
-            }
-
-            var cache =(DynamicCache<T>) _dynamicCache[key];
-            if (refresh)
-            {
-                cache.Value = GetValue(key, def, oldKeys, getter);
-            }
-
-            return cache.Value;
-        }
-
         private static T[] GetArrayValue<T>(string key, T[] def, string[] oldKeys, Func<string, T, T> getter)
         {
             return GetValue(key, def, oldKeys, (key, def) =>
@@ -212,22 +193,6 @@ namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Runtime.Utils
 
                 return result;
             });
-        }
-
-        public static T[] GetArrayValueCached<T>(string key, T[] def, bool refresh, string[] oldKeys, Func<string, T, T> getter)
-        {
-            if (!_dynamicCache.ContainsKey(key))
-            {
-                _dynamicCache.Add(key, new DynamicCache<T[]>(key, GetArrayValue(key, def, oldKeys, getter)));
-            }
-
-            var cache =(DynamicCache<T[]>) _dynamicCache[key];
-            if (refresh)
-            {
-                cache.Value = GetArrayValue(key, def, oldKeys, getter);
-            }
-
-            return cache.Value;
         }
 
         private static void SetValue(string key, bool autoSave, PlayerPrefsDataType type, Action setter)
