@@ -1,11 +1,9 @@
 {
     "name": "UnityPrefsEx.Test",
     "rootNamespace": "UnityPrefsEx.Test",
-    "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "UnityPrefsEx.Runtime"
-    ],
+    "references": ["UnityEngine.TestRunner",
+"UnityEditor.TestRunner",
+"UnityPrefsEx.Runtime"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
