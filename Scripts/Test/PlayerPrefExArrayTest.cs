@@ -3,7 +3,7 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using UnityPrefsEx.Runtime.prefs_ex.Scripts.Runtime.Utils;
+using UnityPrefsEx.Runtime.Projects.unity_prefs_ex.Scripts.Runtime.Utils;
 
 namespace UnityPrefsEx.Test.prefs_ex.Scripts.Test
 {
