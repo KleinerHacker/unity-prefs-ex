@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace UnityPrefsEx.Runtime.prefs_ex.Scripts.Runtime.Utils
+namespace UnityPrefsEx.Runtime.Projects.unity_prefs_ex.Scripts.Runtime.Utils
 {
     public static class PlayerPrefsEx
     {
